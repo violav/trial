@@ -1,0 +1,131 @@
+﻿[
+    {
+      "id": "a",
+      "title": "Auditorium A",
+      "eventColor": "green"
+    },
+    {
+      "id": "b",
+      "title": "Auditorium B",
+      "eventColor": "green"
+    },
+    {
+      "id": "c",
+      "title": "Auditorium C",
+      "eventColor": "orange"
+    },
+    {
+      "id": "d",
+      "title": "Auditorium D",
+      "eventColor": "purple"
+    },
+    {
+      "id": "e",
+      "title": "Auditorium E"
+    },
+    {
+      "id": "f",
+      "title": "Auditorium F",
+      "eventColor": "red"
+    },
+    {
+      "id": "g",
+      "title": "Auditorium G",
+      "eventColor": "red"
+    },
+    {
+      "id": "h",
+      "title": "Auditorium H",
+      "eventColor": "red"
+    },
+    {
+      "id": "i",
+      "title": "Auditorium I",
+      "eventColor": "red"
+    },
+    {
+      "id": "j",
+      "title": "Auditorium J",
+      "eventColor": "red"
+    },
+    {
+      "id": "k",
+      "title": "Auditorium K",
+      "eventColor": "red"
+    },
+    {
+      "id": "l",
+      "title": "Auditorium L",
+      "eventColor": "red"
+    },
+    {
+      "id": "m",
+      "title": "Auditorium M",
+      "eventColor": "red"
+    },
+    {
+      "id": "n",
+      "title": "Auditorium N",
+      "eventColor": "red"
+    },
+    {
+      "id": "o",
+      "title": "Auditorium O",
+      "eventColor": "red"
+    },
+    {
+      "id": "p",
+      "title": "Auditorium P",
+      "eventColor": "red"
+    },
+    {
+      "id": "q",
+      "title": "Auditorium Q",
+      "eventColor": "red"
+    },
+    {
+      "id": "r",
+      "title": "Auditorium R",
+      "eventColor": "red"
+    },
+    {
+      "id": "s",
+      "title": "Auditorium S",
+      "eventColor": "red"
+    },
+    {
+      "id": "t",
+      "title": "Auditorium T",
+      "eventColor": "red"
+    },
+    {
+      "id": "u",
+      "title": "Auditorium U",
+      "eventColor": "red"
+    },
+    {
+      "id": "v",
+      "title": "Auditorium V",
+      "eventColor": "red"
+    },
+    {
+      "id": "w",
+      "title": "Auditorium W",
+      "eventColor": "red"
+    },
+    {
+      "id": "x",
+      "title": "Auditorium X",
+      "eventColor": "red"
+    },
+    {
+      "id": "y",
+      "title": "Auditorium Y",
+      "eventColor": "red"
+    },
+    {
+      "id": "z",
+      "title": "Auditorium Z",
+      "eventColor": "red"
+    }
+  ]

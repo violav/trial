@@ -1,0 +1,187 @@
+﻿@model MVC5FullCalandarPlugin.Models.Schedulazione
+
+@{
+    Layout = null;
+    var oraInizio =  Model.publicHoliday.Start_Date.Hour.ToString().PadLeft(2, '0') + ":" + Model.publicHoliday.Start_Date.Minute.ToString().PadLeft(2, '0');
+    var oraFine =  Model.publicHoliday.End_Date.Hour.ToString().PadLeft(2, '0') + ":" + Model.publicHoliday.End_Date.Minute.ToString().PadLeft(2, '0');
+
+}
+
+
+
+<!DOCTYPE html>
+<div>
+
+    @*<div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel">Aggiungi evento</h4>
+        </div>*@
+    @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Descrizione)
+            </dt>
+        </dl>*@
+    @using (Html.BeginForm())
+    {
+        
+        <div class="form-horizontal">
+
+            @Html.HiddenFor(model => model.publicHoliday.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.publicHoliday.Title, htmlAttributes: new { @class = "control-label col-sm-3 col-xs-3" })
+                <div class="col-sm-9 col-xs-9">
+                    @Html.EditorFor(model => model.publicHoliday.Title, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Risorsa, htmlAttributes: new { @class = "control-label col-sm-3 col-xs-3" })
+                <div class="col-sm-9 col-xs-9">
+                    @Html.DropDownListFor(model => model.Risorsa, new SelectList(ViewBag.Risorse, "id", "title", ViewBag.RisorsaSel), new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.publicHoliday.Desc, htmlAttributes: new { @class = "control-label col-sm-3 col-xs-3" })
+                <div class="col-sm-9 col-xs-9">
+                    @Html.EditorFor(model => model.publicHoliday.Desc, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.publicHoliday.Start_Date, htmlAttributes: new { @class = "control-label  col-sm-3 col-xs-3 " })
+                <div class="col-sm-9 col-xs-9">
+                    @Html.EditorFor(model => model.publicHoliday.Start_Date, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <span class="field-validation-error">
+                        @ViewData.ModelState["Ora"].Errors[0].ErrorMessage
+                    </span>
+                }
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Ora", htmlAttributes: new { @class = "control-label  col-sm-3 col-xs-3 " })
+                <div class="col-sm-9 col-xs-9">
+                    @Html.EditorFor(model => oraInizio, new { htmlAttributes = new { @class = "form-control", @id = "initTime" } })
+                </div>
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <span class="field-validation-error">
+                        @ViewData.ModelState["Ora"].Errors[0].ErrorMessage
+                    </span>
+                }
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.publicHoliday.End_Date, htmlAttributes: new { @class = "control-label col-sm-3 col-xs-3 " })
+                <div class="col-sm-9 col-xs-9">
+                    @Html.EditorFor(model => model.publicHoliday.End_Date, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Ora", htmlAttributes: new { @class = "control-label  col-sm-3 col-xs-3 " })
+                <div class="col-sm-9 col-xs-9">
+                    @Html.EditorFor(model => oraFine, new { htmlAttributes = new { @class = "form-control", @id = "endTime" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-success" onclick="return validate()" />
+                    @*@{
+                        String displayMode = (Model.publicHoliday.Id == 0) ? "none" : "inline";
+                         @Html.ActionLink("Delete", "Home", new { id = Model.publicHoliday.Id }, new { style = "display:" +displayMode +";" })
+                    }*@
+                    <input type="submit" value="Delete" formaction="@Url.Action("Delete", "Home", new{ id = Model.publicHoliday.Id } )" class="btn btn-danger" id="btnDelete" />
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+
+
+<script>
+
+    //$('#initTime').timepicker();
+
+    $(document).ready(
+        function ()
+        {
+            try {
+                alert('id -> ' + @Model.publicHoliday.Id );
+
+                if (@Model.publicHoliday.Id == 0)
+                    $("#btnDelete").css("visibility", "hidden");
+                else
+                    $("#btnDelete").css("visibility", "visible");
+            }
+            catch (ecc) { alert('Eccezione in ready -> ' + ecc.message); }
+        }
+    )
+
+    function validate()
+    {
+        try {
+            var minuto = $('#initTime').val();
+            //alert('minuto -> ' + minuto);
+            var minutofine = $('#endTime').val();
+            //alert('minutofine -> ' + minutofine);
+
+            var dateRegex = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+
+            var inizioGiusto = dateRegex.test(minuto);
+            //alert('inizioGiusto -> ' + inizioGiusto);
+
+
+            var fineGiusto = dateRegex.test(minutofine);
+            //alert('fineGiusto -> ' + fineGiusto);
+
+            //alert('bool inizio ' + Boolean(inizioGiusto));
+            //alert('bool fineGiusto ' + Boolean(fineGiusto));
+
+            if (Boolean(inizioGiusto) && Boolean(fineGiusto)) return true;
+            else
+            {
+                alert('settare la data correttamente');
+                return false;
+            }
+
+        }
+        catch (Exc)
+        {
+            alert('Exc -> ' + Exc.message);
+        }
+    }
+
+
+
+</script>
+
+<style>
+
+    
+
+    /*.datepicker,
+    .table-condensed {
+        width: 100px;
+        height: 180px;
+        font-size: x-small;
+    }
+
+    .bootstrap-datepicker-widget, .dropdown-menu, .bottom {
+        width: 100px;
+        height: 200px;
+    }
+
+    .bootstrap-datepicker-widget, .dropdown-menu, .top {
+        width: 100px;
+        height: 200px;
+    }*/
+
+
+</style>

@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "ASP.NET MVC5 - Full Calendar JQuery Plugin";
+}
+
+<div class="row">
+    <div class="panel-heading">
+        <div class="col-md-8  custom-heading3">
+            <h3>
+                <i class="fa fa-calendar"></i>
+                <span>ASP.NET MVC5 - Scheduler</span>
+            </h3>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <input id="tedt"/>
+        @*<div class="col-md-3">
+                <table width="100%" class="table table-bordered">
+                    <tr>
+                        <th>Utente</th>
+                    </tr>
+                    @foreach (var item in ViewBag.Risorse)
+                    {
+                            <tr>
+                                <td style=" border: 5px solid @item.Colore" width="80%" >@item.Descrizione</td>
+                            </tr>
+                    }
+                </table>
+            </div>*@
+        <section class="col-md-9 col-md-push-0">
+            @Html.Partial("_CalendarPartial")
+        </section>
+
+        @*<a href="javascript:void(0);" class="anchorDetail" data-id="f">TEST</a>
+
+            <div id="dialog" title="Basic dialog">*@
+
+
+    </div>
+</div>
+
+@*<script>
+    $('#tedt').datetimepicker();
+
+</script>*@
+
+@section scripts
+{
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    @*<script type="text/javascript">
+        $(function () { // will trigger when the document is ready
+            $('.datepicker').datepicker(); //Initialise any date pickers
+        });
+    </script>*@
+
+    @*<script src="https://code.jquery.com/jquery-ui-1.10.4.custom.js"></script>
+        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+
+
+        <script>
+
+            var TeamDetailPostBackURL = '/Home/AddDate';
+            $(function () {
+                $(".anchorDetail").click(function () {
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: TeamDetailPostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        //data:  "userId=2&dt=12122012" ,
+                        datatype: "json",
+                        success: function (data) {
+                            $("#dialog").dialog({
+                                modal: true,
+                                title: "ADD LISTINO",
+                                open: function () {
+                                    $(this).html(data)
+                                },
+                                buttons: {
+                                    Ok: function () {
+                                        $(this).dialog("close");
+                                    }
+                                }
+                            });
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+
+            });
+
+
+        </script>*@
+} 
